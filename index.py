@@ -15,6 +15,8 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from paths_routes import generate_and_save_routes
 
+PORT = 5000
+
 app = FastAPI()
 
 @app.get("/home")
@@ -39,5 +41,5 @@ def logout():
 
 if __name__ == "__main__":
     import uvicorn
-    generate_and_save_routes(app)
-    uvicorn.run(app, host="0.0.0.0", port=3000)
+    generate_and_save_routes(app, port=PORT)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
