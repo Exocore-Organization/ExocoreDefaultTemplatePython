@@ -2,7 +2,6 @@ import os
 import json
 
 def normalize_path(path):
-    # Normalize path: remove multiple slashes and trailing slashes (except root)
     while '//' in path:
         path = path.replace('//', '/')
     if path != '/' and path.endswith('/'):
@@ -23,9 +22,12 @@ def extract_routes(app):
     routes.sort(key=lambda x: (x['path'], x['method']))
     return routes
 
-def generate_and_save_routes(app, output_path='../exocore-web/models/routes.json'):
+def generate_and_save_routes(app, port=5000, output_path='../exocore-web/models/routes.json'):
     routes = extract_routes(app)
-    data = {'routes': routes}
+    data = {
+        'port': port,
+        'routes': routes
+    }
 
     output_dir = os.path.dirname(output_path)
     if not os.path.exists(output_dir):
