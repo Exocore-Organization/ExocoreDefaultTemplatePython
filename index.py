@@ -8,7 +8,6 @@ It's designed to be a versatile starting point,
 ready for you to build upon and customize for your projects.
 
 #Btw this template is default only
-NOTE: Port is fixed. Changing the port is NOT allowed.
 """
 
 from fastapi import FastAPI
